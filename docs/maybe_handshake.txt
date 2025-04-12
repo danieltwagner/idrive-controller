@@ -1,0 +1,101 @@
+Sending 4E7: 67 1 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+     Received 4E7: 67 2 FF FF FF FF FF FF
+     Received 4E7: 68 52 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 4E8: 67 72 FE FF FF FF FF FF
+Sending 4E8: 68 1 FE FF FF FF FF FF
+     Received 5E8: 1 1 AE FF FF FF FF FF
+Sending 1AA: F3 7F A 6 0 0 7F 7F
+     Received 4E7: 68 72 FE FF FF FF FF FF
+Sending 4E8: 68 1 FE FF FF FF FF FF
+     Received 4E7: 67 2 FF FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+     Received 4E7: 68 52 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 4E8: 67 72 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+     Received 5E8: 1 1 AE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+Sending 4E8: 68 1 FE FF FF FF FF FF
+     Received 4E7: 68 72 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 4E7: 67 2 FF FF FF FF FF FF
+Sending 4E8: 68 1 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+     Received 4E7: 68 72 FE FF FF FF FF FF
+Sending 4E8: 68 1 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 4E7: 68 72 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 4E7: 67 2 FF FF FF FF FF FF
+Sending 4E8: 68 1 FE FF FF FF FF FF
+     Received 4E8: 67 72 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+     Received 5E8: 1 1 AE FF FF FF FF FF
+     Received 4E7: 67 2 FF FF FF FF FF FF
+     Received 4E7: 68 52 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 4E8: 67 72 FE FF FF FF FF FF
+Sending 4E8: 68 1 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 5E8: 1 1 AE FF FF FF FF FF
+     Received 4E7: 68 72 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 4E7: 67 2 FF FF FF FF FF FF
+     Received 4E7: 68 52 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+Sending 4E8: 68 1 FE FF FF FF FF FF
+     Received 4E8: 67 72 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 5E8: 1 1 AE FF FF FF FF FF
+     Received 4E7: 68 72 FE FF FF FF FF FF
+Sending 4E8: 68 1 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 4E7: 67 2 FF FF FF FF FF FF
+     Received 4E7: 68 52 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 4E8: 67 72 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+     Received 5E8: 1 1 AE FF FF FF FF FF
+     Received 4E7: 67 2 FF FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+     Received 4E7: 68 52 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+Sending 4E8: 68 1 FE FF FF FF FF FF
+Sending 4E8: 68 1 FE FF FF FF FF FF
+     Received 4E8: 67 72 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+     Received 5E8: 1 1 AE FF FF FF FF FF
+     Received 4E7: 67 2 FF FF FF FF FF FF
+     Received 4E7: 68 52 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 4E8: 67 72 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+     Received 5E8: 1 1 AE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 4E7: 67 2 FF FF FF FF FF FF
+Sending 4E8: 68 1 FE FF FF FF FF FF
+     Received 4E8: 67 72 FE FF FF FF FF FF
+Sending 4E7: 67 1 FE FF FF FF FF FF
+     Received 5E8: 1 1 AE FF FF FF FF FF
+     Received 4E7: 67 2 FF FF FF FF FF FF
+     Received 4E7: 68 52 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 4E8: 67 72 FE FF FF FF FF FF
+Sending 4E8: 68 1 FE FF FF FF FF FF
+     Received 5E7: 1 1 AA FF FF FF FF FF
+     Received 5E8: 1 1 AE FF FF FF FF FF
