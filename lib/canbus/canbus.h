@@ -9,6 +9,15 @@ typedef struct {
     int id;
     int length;
     uint8_t data[8];
+    // Data fields are:
+    // - haptic mode
+    // - click hardness
+    // - step to step distance
+    // - number of steps
+    // - start position
+    // - reserved 0x00 ?
+    // - constant brake strength
+    // - end stop force
 } cmd;
 
 enum class Handshake {

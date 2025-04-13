@@ -8,67 +8,76 @@ void iDrive::subscribe(iDriveCallback *callback) {
     callbacks.push_back(callback);
 }
 
-bool iDrive::configureHapticFeedback(uint8_t numSteps, uint8_t startPos) {
-    this->deltaStepToStep = 0xA0;
+// Examples
+
+// main menu
+// enqueue({id, 8, {0xF0, 0x7F, 0,0,0,0,0,0}});
+
+// ok, fine, with limits on both sides, position set
+// enqueue({0x1AE, 8, {0xF5, 0x2A, 0x0A, 0x06, 0x04, 0x00, 0xFF, 0x7F}});
+
+// Spinning: in the phone numbers menu
+// enqueue({0x1AE, 8, {0xF4, 0x2A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}});
+
+// in the phone canciones menu - jumps
+// enqueue({0x1AE, 8, {0xF3, 0x7F, 0x0A, 0x06, 0x00, 0x00, 0x35, 0x7F}});
+
+// idrive_haptic_rough
+// enqueue({0x1AE, 8, {0xF1, 0x7F, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00}});
+
+// idrive_haptic_fine
+// enqueue({0x1AE, 8, {0xF1, 0x7F, 0x0A, 0xFF, 0x00, 0x00, 0x20, 0x7F}});
+
+// Custom
+// enqueue({0x1AE, 8, {0xF2, 0x7F, 0x20, 0x08, 0x00, 0x00, 0x20, 0x7F}});
+// enqueue({0x1AA, 8, {0xF2, 0x7F, 0x20, 0x08, 0x00, 0x00, 0x20, 0x7F}});
+
+// Dimmer menu/user buttons to minimum
+// enqueue({0x202, 2, {0x00, 0xFF}});
+
+// Dimmer menu/user buttons to maximum
+// enqueue({0x202, 2, {0xEF, 0xFF}});
+
+bool iDrive::configureHaptics(
+    HapticMode mode,
+    uint8_t clickHardness,
+    uint8_t stepDistance,
+    uint8_t numSteps,
+    uint8_t startPos,
+    uint8_t hillSize,
+    uint8_t endResistance
+) {
+    this->mode = mode;
+    this->clickHardness = clickHardness;
+    this->stepDistance = stepDistance;
     this->numSteps = numSteps;
     this->lastStepPos = startPos;
+    this->hillSize = hillSize;
+    this->endResistance = endResistance;
 
+    return sendHapticConfig();
+}
+
+bool iDrive::sendHapticConfig() {
     if (this->deviceID < 0) {
         return false;
     }
-    // 0xF0 = constant braking force
-    // 0xF1 = no end stops
-    // 0xF2 = big notch (5x size) at the end, then spinning freely
-    // 0xF3 = springy at the ends, returns to nearest step
-    // 0xF4 = ?
-    // 0xF5 = ?
-    uint8_t type = 0xF3;
-    uint8_t click_hardness = 0x7F;
-    uint8_t constant_brake = 0x7F;  // for type 0xF0
-    uint8_t end_stop_force = 0x7F;  // at least with types F2 and F3
+
     canBus.enqueue({
-        this->deviceID, 
-        8, 
+        this->deviceID,
+        8,
         {
-            type, 
-            click_hardness, 
-            (uint8_t)(deltaStepToStep >> 4), 
-            numSteps, 
-            startPos, 
-            0x00, 
-            constant_brake, 
-            end_stop_force
+            static_cast<uint8_t>(this->mode),
+            this->clickHardness,
+            static_cast<uint8_t>(this->stepDistance >> 4),
+            this->numSteps,
+            this->lastStepPos,
+            0x00, // what does this do?
+            this->hillSize,
+            this->endResistance
         }
     });
     return true;
-
-    // Dimmer minimum
-    // enqueue({0x202, 2, {0x00, 0xFF}});
-    
-    // Dimmer maximum
-    // enqueue({0x202, 2, {0xEF, 0xFF}});
-    
-    // main menu
-    // enqueue({id, 8, {0xF0, 0x7F, 0,0,0,0,0,0}});
-
-    // ok, fine, with limits on both sides, position set
-    // sendPacket({0x1AE, 8, {0xF5, 0x2A, 0x0A, 0x06, 0x04, 0x00, 0xFF, 0x7F}}, false);
-    
-    // Spinning: in the phone numbers menu
-    // sendPacket({0x1AE, 8, {0xF4, 0x2A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}}, false);
-    
-    // in the phone canciones menu - jumps
-    // sendPacket({0x1AE, 8, 0xF3, 0x7F, 0x0A, 0x06, 0x00, 0x00, 0x35, 0x7F});
-
-    // idrive_haptic_rough
-    // sendPacket({0x1AE, 8, 0xF1, 0x7F, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00});
-
-    // idrive_haptic_fine
-    // sendPacket({0x1AE, 8, 0xF1, 0x7F, 0x0A, 0xFF, 0x00, 0x00, 0x20, 0x7F}, false);
-
-    // Custom
-    // sendPacket({0x1AE, 8, {0xF2, 0x7F, 0x20, 0x08, 0x00, 0x00, 0x20, 0x7F}}, false);
-    // sendPacket({0x1AA, 8, {0xF2, 0x7F, 0x20, 0x08, 0x00, 0x00, 0x20, 0x7F}}, false); 
 }
 
 void iDrive::handleMessage(int id, int size, uint8_t *data, bool incoming) {
@@ -94,11 +103,15 @@ void iDrive::handleMessage(int id, int size, uint8_t *data, bool incoming) {
                 // 5E8 -> 580 0x68 info for how to send haptic control msg (from rear iDrive)
 
                 int16_t newRotation = (int16_t)(data[3] << 8) + data[2];
-                int newStepPos = (newRotation + deltaStepToStep/2)/deltaStepToStep;
-                newStepPos = min((int)numSteps - 1, max(0, newStepPos));
-                if (newStepPos != lastStepPos) {
-                  sendRotationChanged(lastStepPos, newStepPos);
-                  lastStepPos = newStepPos;
+                if (stepDistance) {
+                    int newStepPos = (newRotation + stepDistance/2)/stepDistance;
+                    newStepPos = min((int)numSteps - 1, max(0, newStepPos));
+                    if (newStepPos != lastStepPos) {
+                    sendStepsChanged(lastStepPos, newStepPos);
+                    lastStepPos = newStepPos;
+                    }
+                } else {
+                    sendRotationChanged(newRotation);
                 }
 
                 uint8_t newButtonStatus = data[1];
@@ -124,7 +137,7 @@ void iDrive::handleMessage(int id, int size, uint8_t *data, bool incoming) {
                     } else if (((lastButtonStatus & 0xD0) == 0xD0) && ((newButtonStatus & 0xD0) != 0xD0)) {
                         sendUserButtonChanged(false);
                     }
-                    
+
                     lastButtonStatus = newButtonStatus;
                 }
             }
@@ -132,17 +145,20 @@ void iDrive::handleMessage(int id, int size, uint8_t *data, bool incoming) {
 
         case 0x580:
             this->deviceID = (data[1] << 8) + data[2];
-            if (lastStepPos >= 0) {
-                // we configured this before
-                configureHapticFeedback(numSteps, lastStepPos);
-            }
+            sendHapticConfig();
             break;
     }
 }
 
-void iDrive::sendRotationChanged(int oldStepPos, int newStepPos) {
+void iDrive::sendStepsChanged(int oldStepPos, int newStepPos) {
     for (std::list<iDriveCallback *>::iterator it=callbacks.begin(); it != callbacks.end(); ++it) {
-        (*it)->rotationChanged(oldStepPos, newStepPos);
+        (*it)->stepsChanged(oldStepPos, newStepPos);
+    }
+}
+
+void iDrive::sendRotationChanged(int newRotation) {
+    for (std::list<iDriveCallback *>::iterator it=callbacks.begin(); it != callbacks.end(); ++it) {
+        (*it)->rotationChanged(newRotation);
     }
 }
 

@@ -1,7 +1,12 @@
 # BMW iDrive library
 Uses an ESP32 DevKit and TJA 1055 CAN driver to interface with a BMW E65 iDrive controller.
-I've partially reverse-engineered the protocol but make no promises about the accuracy. It seems to work for me.
+I've partially reverse-engineered the required handshakes but make no promises about the accuracy. It seems to work for me.
 
+The demo uses the menu and user buttons to switch through a series of presets. Information about the preset is shown on an ST7735 160x128px display.
+
+I have not spent much time looking into alternative haptic configurations, there is likely more to be done.
+
+![TJA 1055 wiring](vero-board.png)
 
 # Notes
 Below are the unedited notes I took while investigating the controller. They point at lots of other resources and might be useful to someone else looking into these devices.
@@ -273,6 +278,8 @@ Sending `1AE` messages (instead of `1AA`) seems to do something! However, the co
 it starts spinning on its own! The more frequent I send the message the quicker it spins.
 
 [Seems like](https://www.bimmerforums.com/forum/showthread.php?1984229-iDrive-Wheel-Is-Possessed-(twitches-and-turns-by-itself)) this [is](https://www.bimmerfest.com/threads/idrive-going-crazy.500239/) a [somewhat](https://www.e90post.com/forums/showthread.php?t=78847) common [problem](https://www.bimmerfest.com/threads/idrive-knob-spinning-out-of-control.674424/)? Replacing the module seems to be the solution 😞 
+
+[No more notes after this, I think cleaning the device thoroughly resolved it?]
 
 
 ## Figuring out 1B8 messages
