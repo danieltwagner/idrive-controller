@@ -1311,3 +1311,17 @@ To set up a balance knob with a fixed range and a notch in the center, send thes
 ```
 
 Let me know if these don't work for you. Also please send me corrections or things you've figured out, in general this is all my best guess because I don't have any real docs.
+
+# Immersion Studio
+
+I found a copy of Immersion Studio 4.1.0 on the [Wayback Machine](https://web.archive.org/web/20011102113113/http://www.immersion.com/developer/technology/tools/tool.php?t=7)
+
+```
+sudo apt install wine winetricks
+winetricks mfc42
+wine ImmersionStudioFull.msi
+cd ~/.wine/drive_c/Program Files (x86)/Immersion Corporation/Immersion Studio
+wine IStudio.exe
+```
+
+Based on a quick look around it doesn't seem to support the rotary haptic encoder lines.
